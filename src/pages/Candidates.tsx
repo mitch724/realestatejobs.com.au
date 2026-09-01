@@ -11,6 +11,7 @@ import {
   useSensors,
   type DragEndEvent,
 } from '@dnd-kit/core'
+import { snapCenterToCursor } from '@dnd-kit/modifiers'
 import { Button, IconButton, Text, cn } from '@/components/ui'
 import { ChevronDown, Filter } from '@/components/ui/icons'
 import { RoleList } from '@/components/candidates/RoleList'
@@ -142,7 +143,7 @@ export default function Candidates() {
               )}
             </div>
 
-            <DragOverlay dropAnimation={null}>
+            <DragOverlay dropAnimation={null} modifiers={[snapCenterToCursor]}>
               {activeCandidate ? <DragPreview candidate={activeCandidate} /> : null}
             </DragOverlay>
           </DndContext>
