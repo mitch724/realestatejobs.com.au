@@ -379,3 +379,13 @@ export const recommendedJobs: RecommendedJob[] = [
     salary: '$85,000 – $95,000 + Superannuation',
   },
 ]
+
+const rjSalary = '$90,000 – $100,000 + Superannuation'
+
+export const candidateJobs: RecommendedJob[] = [
+  { id: 'cj-1', company: 'McGrath North Lakes', title: 'Senior Property Manager', location, employmentType: 'Full-time', salary: rjSalary },
+  { id: 'cj-2', company: 'McGrath North Lakes', title: 'Marketing Coordinator', location, employmentType: 'Full-time', salary: rjSalary },
+  { id: 'cj-3', company: 'McGrath North Lakes', title: 'Software Engineer (React)', location, employmentType: 'Full-time', salary: rjSalary },
+  { id: 'cj-4', company: 'McGrath North Lakes', title: 'Customer Success Specialist', location, employmentType: 'Full-time', salary: rjSalary },
+  { id: 'cj-5', company: 'McGrath North Lakes', title: 'Graduate Data Analyst', location, employmentType: 'Full-time', salary: rjSalary },
+]

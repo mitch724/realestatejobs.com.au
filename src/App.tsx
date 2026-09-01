@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Jobs from './pages/Jobs'
 import Candidates from './pages/Candidates'
 import CandidateDashboard from './pages/candidate/Dashboard'
+import CandidateJobs from './pages/candidate/Jobs'
 import Placeholder from './pages/Placeholder'
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
 
         <Route element={<Layout navItems={candidateNavItems} showCreate={false} />}>
           <Route path="/candidate" element={<CandidateDashboard />} />
-          <Route path="/candidate/jobs" element={<Placeholder title="Jobs" />} />
+          <Route path="/candidate/jobs" element={<CandidateJobs />} />
           <Route path="/candidate/applications" element={<Placeholder title="My Applications" />} />
           <Route path="/candidate/messages" element={<Placeholder title="Messages" />} />
         </Route>

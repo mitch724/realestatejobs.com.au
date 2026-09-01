@@ -3,7 +3,7 @@ import { Badge, Text } from '@/components/ui'
 import { Eye, Send, Share } from '@/components/ui/icons'
 import type { RecommendedJob } from '@/types'
 
-const columns = ['Job', 'Applications', 'Job type', 'Job actions']
+const columns = ['Job', 'Salary', 'Job type', 'Job actions']
 const cell = 'px-4 py-5 md:px-6 md:py-6'
 
 interface RecommendedJobsProps {
