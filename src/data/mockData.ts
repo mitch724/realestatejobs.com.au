@@ -7,6 +7,7 @@ import type {
   PipelineStage,
   Role,
   Candidate,
+  RecommendedJob,
 } from '@/types'
 
 export const currentUser: User = {
@@ -16,11 +17,18 @@ export const currentUser: User = {
   companyLogoUrl: '/ljhooker-logo.png',
 }
 
-export const navItems: NavItem[] = [
-  { id: 'dashboard', label: 'Dashboard', path: '/', icon: Category },
+export const employerNavItems: NavItem[] = [
+  { id: 'dashboard', label: 'Dashboard', path: '/', end: true, icon: Category },
   { id: 'jobs', label: 'Jobs', path: '/jobs', icon: Briefcase },
   { id: 'candidates', label: 'Candidates', path: '/candidates', icon: Profile2User },
   { id: 'messages', label: 'Messages', path: '/messages', icon: MessageNotif },
+]
+
+export const candidateNavItems: NavItem[] = [
+  { id: 'c-dashboard', label: 'Dashboard', path: '/candidate', end: true, icon: Category },
+  { id: 'c-jobs', label: 'Jobs', path: '/candidate/jobs', icon: Briefcase },
+  { id: 'c-applications', label: 'My Applications', path: '/candidate/applications', icon: Profile2User },
+  { id: 'c-messages', label: 'Messages', path: '/candidate/messages', icon: MessageNotif },
 ]
 
 export const stats: Stat[] = [
@@ -327,5 +335,47 @@ export const candidates: Candidate[] = [
       'Enthusiastic leasing consultant with strong people skills, currently building experience across the end-to-end property management process.',
     tags: ['Leasing', 'People skills'],
     appliedAgo: '4 days ago',
+  },
+]
+
+export const candidateStats: Stat[] = [
+  { id: 'applied', label: 'Jobs Applied for', value: 12, icon: Briefcase },
+  { id: 'active', label: 'Active', value: 0, icon: Briefcase },
+  { id: 'not-suitable', label: 'Not Suitable', value: 1, icon: Briefcase },
+  { id: 'available', label: 'Available Jobs', value: 2, icon: Briefcase },
+]
+
+export const recommendedJobs: RecommendedJob[] = [
+  {
+    id: 'rj-1',
+    company: 'McGrath North Lakes',
+    title: 'Senior Property Manager',
+    location,
+    employmentType: 'Full-time',
+    salary: '$90,000 – $100,000 + Superannuation',
+  },
+  {
+    id: 'rj-2',
+    company: 'McGrath North Lakes',
+    title: 'Marketing Coordinator',
+    location,
+    employmentType: 'Full-time',
+    salary: '$90,000 – $100,000 + Superannuation',
+  },
+  {
+    id: 'rj-3',
+    company: 'Ray White Richmond',
+    title: 'Leasing Consultant',
+    location,
+    employmentType: 'Part-time',
+    salary: '$70,000 – $80,000 + Superannuation',
+  },
+  {
+    id: 'rj-4',
+    company: 'Barry Plant Hawthorn',
+    title: 'Property Manager',
+    location,
+    employmentType: 'Full-time',
+    salary: '$85,000 – $95,000 + Superannuation',
   },
 ]

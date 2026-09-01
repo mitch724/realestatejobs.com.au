@@ -51,7 +51,17 @@ export interface NavItem {
   id: string
   label: string
   path: string
+  end?: boolean
   icon: IconComponent
+}
+
+export interface RecommendedJob {
+  id: string
+  company: string
+  title: string
+  location: string
+  employmentType: string
+  salary: string
 }
 
 export type PipelineStage =

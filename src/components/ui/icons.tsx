@@ -20,6 +20,7 @@ import {
   Clock as _Clock,
   ArrowDown2 as _ChevronDown,
   Filter as _Filter,
+  Share as _Share,
 } from 'iconsax-react'
 import type { IconComponent, IconProps } from '@/types'
 
@@ -56,6 +57,7 @@ export const Send = withDefaults(_Send, 'Send')
 export const Clock = withDefaults(_Clock, 'Clock')
 export const ChevronDown = withDefaults(_ChevronDown, 'ChevronDown')
 export const Filter = withDefaults(_Filter, 'Filter')
+export const Share = withDefaults(_Share, 'Share')
 
 // iconsax has no podium icon; custom SVG (winner's podium + star).
 export function Ranking({ size = 24, color = 'currentColor', className }: IconProps) {
