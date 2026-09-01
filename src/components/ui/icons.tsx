@@ -13,6 +13,13 @@ import {
   Edit2 as _Edit,
   Copy as _Copy,
   More as _More,
+  Eye as _Eye,
+  Video as _Video,
+  Sms as _Sms,
+  Send2 as _Send,
+  Clock as _Clock,
+  ArrowDown2 as _ChevronDown,
+  Filter as _Filter,
 } from 'iconsax-react'
 import type { IconComponent, IconProps } from '@/types'
 
@@ -42,6 +49,13 @@ export const Repost = withDefaults(_Repost, 'Repost')
 export const Edit = withDefaults(_Edit, 'Edit')
 export const Copy = withDefaults(_Copy, 'Copy')
 export const More = withDefaults(_More, 'More')
+export const Eye = withDefaults(_Eye, 'Eye')
+export const Video = withDefaults(_Video, 'Video')
+export const Sms = withDefaults(_Sms, 'Sms')
+export const Send = withDefaults(_Send, 'Send')
+export const Clock = withDefaults(_Clock, 'Clock')
+export const ChevronDown = withDefaults(_ChevronDown, 'ChevronDown')
+export const Filter = withDefaults(_Filter, 'Filter')
 
 // iconsax has no podium icon; custom SVG (winner's podium + star).
 export function Ranking({ size = 24, color = 'currentColor', className }: IconProps) {

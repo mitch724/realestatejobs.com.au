@@ -53,3 +53,34 @@ export interface NavItem {
   path: string
   icon: IconComponent
 }
+
+export type PipelineStage =
+  | 'applied'
+  | 'screening'
+  | 'shortlisted'
+  | 'interview'
+  | 'offer'
+  | 'not-suitable'
+
+export interface Role {
+  id: string
+  title: string
+  count: number
+}
+
+export interface Candidate {
+  id: string
+  roleId: string
+  stage: PipelineStage
+  name: string
+  avatarUrl: string
+  currentRole: string
+  experience: string
+  matchScore: number
+  lastPositionCompany: string
+  lastPositionPeriod: string
+  headline: string
+  description: string
+  tags: string[]
+  appliedAgo: string
+}
