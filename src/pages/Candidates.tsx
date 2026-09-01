@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {
   DndContext,
+  DragOverlay,
   KeyboardSensor,
   PointerSensor,
   pointerWithin,
@@ -21,7 +22,7 @@ export default function Candidates() {
   const [list, setList] = useState<Candidate[]>(initialCandidates)
   const [roleId, setRoleId] = useState(roles[0].id)
   const [stage, setStage] = useState<PipelineStage>('applied')
-  const [dragging, setDragging] = useState(false)
+  const [activeId, setActiveId] = useState<string | null>(null)
   const log = (msg: string) => console.log(`[candidates] ${msg}`)
 
   const sensors = useSensors(
@@ -34,17 +35,16 @@ export default function Candidates() {
   const countFor = (s: PipelineStage) => roleCandidates.filter((c) => c.stage === s).length
   const visible = roleCandidates.filter((c) => c.stage === stage)
   const stageLabel = pipelineStages.find((s) => s.value === stage)?.label ?? ''
+  const activeCandidate = list.find((c) => c.id === activeId) ?? null
 
   function handleDragEnd(event: DragEndEvent) {
-    setDragging(false)
+    setActiveId(null)
     const { active, over } = event
     if (!over) return
     const target = over.id as PipelineStage
     const candidate = list.find((c) => c.id === active.id)
     if (!candidate || candidate.stage === target) return
-    setList((prev) =>
-      prev.map((c) => (c.id === active.id ? { ...c, stage: target } : c)),
-    )
+    setList((prev) => prev.map((c) => (c.id === active.id ? { ...c, stage: target } : c)))
     setStage(target)
     log(`moved ${candidate.name} → ${target}`)
   }
@@ -96,8 +96,8 @@ export default function Candidates() {
           <DndContext
             sensors={sensors}
             collisionDetection={pointerWithin}
-            onDragStart={() => setDragging(true)}
-            onDragCancel={() => setDragging(false)}
+            onDragStart={(e) => setActiveId(e.active.id as string)}
+            onDragCancel={() => setActiveId(null)}
             onDragEnd={handleDragEnd}
           >
             <div className="mt-4 border-b border-line">
@@ -107,9 +107,8 @@ export default function Candidates() {
                     key={s.value}
                     stage={s.value}
                     label={s.label}
-                    count={countFor(s.value)}
                     active={s.value === stage}
-                    dragging={dragging}
+                    dragging={activeId !== null}
                     onClick={() => setStage(s.value)}
                   />
                 ))}
@@ -142,6 +141,10 @@ export default function Candidates() {
                 </p>
               )}
             </div>
+
+            <DragOverlay dropAnimation={null}>
+              {activeCandidate ? <DragPreview candidate={activeCandidate} /> : null}
+            </DragOverlay>
           </DndContext>
         </div>
       </div>
@@ -152,14 +155,12 @@ export default function Candidates() {
 function StageTab({
   stage,
   label,
-  count,
   active,
   dragging,
   onClick,
 }: {
   stage: PipelineStage
   label: string
-  count: number
   active: boolean
   dragging: boolean
   onClick: () => void
@@ -171,21 +172,13 @@ function StageTab({
       onClick={onClick}
       aria-current={active ? 'true' : undefined}
       className={cn(
-        '-mb-px inline-flex shrink-0 items-center gap-1.5 rounded-t-lg border-b-2 px-2 pb-3 pt-1 text-[15px] font-semibold transition-colors',
+        '-mb-px inline-flex shrink-0 items-center rounded-t-lg border-b-2 px-2 pb-3 pt-1 text-[15px] font-semibold transition-colors',
         active ? 'border-highfit text-ink' : 'border-transparent text-muted hover:text-ink',
-        dragging && 'border-dashed border-brand-200',
+        dragging && !isOver && 'border-dashed border-brand-200 text-brand-400',
         isOver && 'border-brand-500 bg-brand-50 text-brand-700',
       )}
     >
       {label}
-      <span
-        className={cn(
-          'inline-flex min-w-5 justify-center rounded-md px-1.5 py-0.5 text-xs font-semibold',
-          active ? 'bg-nav-active-surface text-ink' : 'bg-gray-100 text-muted',
-        )}
-      >
-        {count}
-      </span>
     </button>
   )
 }
@@ -197,25 +190,36 @@ function DraggableCandidate({
   candidate: Candidate
   onAction: (action: string, candidate: Candidate) => void
 }) {
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
-    id: candidate.id,
-  })
-  const style = transform
-    ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`, zIndex: 50 }
-    : undefined
-
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({ id: candidate.id })
   return (
     <div
       ref={setNodeRef}
-      style={style}
-      className={cn(
-        'touch-none',
-        isDragging ? 'cursor-grabbing opacity-95 shadow-2xl' : 'cursor-grab',
-      )}
+      className={cn('touch-none', isDragging ? 'opacity-40' : 'cursor-grab')}
       {...listeners}
       {...attributes}
     >
       <CandidateCard candidate={candidate} onAction={onAction} />
+    </div>
+  )
+}
+
+function DragPreview({ candidate }: { candidate: Candidate }) {
+  return (
+    <div className="flex w-72 cursor-grabbing items-center gap-3 rounded-xl border border-line bg-white p-3 shadow-2xl">
+      <img
+        src={candidate.avatarUrl}
+        alt=""
+        width={40}
+        height={40}
+        className="h-10 w-10 rounded-full object-cover"
+      />
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-[15px] font-semibold text-ink">{candidate.name}</p>
+        <p className="truncate text-sm text-muted">{candidate.currentRole}</p>
+      </div>
+      <span className="shrink-0 rounded-lg bg-success-surface px-2.5 py-1 text-sm font-bold text-success">
+        {candidate.matchScore}%
+      </span>
     </div>
   )
 }
