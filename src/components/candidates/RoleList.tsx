@@ -31,8 +31,8 @@ export function RoleList({ roles, selectedId, onSelect }: RoleListProps) {
               <span className="text-[15px] font-semibold text-ink">{role.title}</span>
               <span
                 className={cn(
-                  'inline-flex min-w-6 justify-center rounded-md px-2 py-0.5 text-xs font-semibold text-muted',
-                  selected ? 'bg-white' : 'bg-gray-100',
+                  'inline-flex min-w-6 justify-center rounded-md px-2 py-0.5 text-xs font-semibold text-brand-600',
+                  selected ? 'bg-white' : 'bg-brand-50',
                 )}
               >
                 {role.count}
