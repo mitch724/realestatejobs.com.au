@@ -9,10 +9,10 @@ export const currentUser: User = {
 }
 
 export const navItems: NavItem[] = [
-  { id: 'dashboard', label: 'Dashboard', icon: Category },
-  { id: 'jobs', label: 'Jobs', icon: Briefcase },
-  { id: 'candidates', label: 'Candidates', icon: Profile2User },
-  { id: 'messages', label: 'Messages', icon: MessageNotif },
+  { id: 'dashboard', label: 'Dashboard', path: '/', icon: Category },
+  { id: 'jobs', label: 'Jobs', path: '/jobs', icon: Briefcase },
+  { id: 'candidates', label: 'Candidates', path: '/candidates', icon: Profile2User },
+  { id: 'messages', label: 'Messages', path: '/messages', icon: MessageNotif },
 ]
 
 export const stats: Stat[] = [
@@ -72,5 +72,108 @@ export const jobs: Job[] = [
     hasPerformance: true,
     videoStatus: 'to-be-completed',
     action: 'continue-draft',
+  },
+]
+
+const salary = '$90,000 – $100,000 + Superannuation'
+const location = 'Richmond, Melbourne, VIC'
+
+export const employerJobs: Job[] = [
+  {
+    id: 'ej-1',
+    title: 'Senior Property Manager',
+    collection: 'active',
+    salary,
+    location,
+    employmentType: 'Full-time',
+    applications: { total: 120, new: 11, highFit: 15 },
+    hasPerformance: true,
+    videoStatus: 'to-be-completed',
+  },
+  {
+    id: 'ej-2',
+    title: 'Senior Product Designer',
+    collection: 'active',
+    salary,
+    location,
+    employmentType: 'Full-time',
+    applications: { total: 14, new: 2, highFit: 1 },
+    hasPerformance: true,
+    videoStatus: 'completed',
+  },
+  {
+    id: 'ej-3',
+    title: 'Marketing Coordinator',
+    collection: 'active',
+    salary,
+    location,
+    employmentType: 'Full-time',
+    applications: { total: 50, new: 10, highFit: 1 },
+    hasPerformance: true,
+    videoStatus: 'to-be-completed',
+  },
+  {
+    id: 'ej-4',
+    title: 'Software Engineer (React)',
+    collection: 'active',
+    salary,
+    location,
+    employmentType: 'Full-time',
+    applications: { total: 25, new: 7, highFit: 2 },
+    hasPerformance: true,
+    videoStatus: 'to-be-completed',
+  },
+  {
+    id: 'ej-5',
+    title: 'Customer Success Specialist',
+    collection: 'active',
+    salary,
+    location,
+    employmentType: 'Full-time',
+    applications: { total: 30, new: 5, highFit: 3 },
+    hasPerformance: true,
+    videoStatus: 'completed',
+  },
+  {
+    id: 'ej-6',
+    title: 'Graduate Data Analyst',
+    collection: 'draft',
+    salary,
+    location,
+    employmentType: 'Full-time',
+    hasPerformance: false,
+    videoStatus: 'none',
+  },
+  {
+    id: 'ej-7',
+    title: 'Leasing Consultant',
+    collection: 'draft',
+    salary,
+    location,
+    employmentType: 'Part-time',
+    hasPerformance: false,
+    videoStatus: 'none',
+  },
+  {
+    id: 'ej-8',
+    title: 'Office Administrator',
+    collection: 'archive',
+    salary,
+    location,
+    employmentType: 'Full-time',
+    applications: { total: 42, highFit: 4 },
+    hasPerformance: true,
+    videoStatus: 'completed',
+  },
+  {
+    id: 'ej-9',
+    title: 'Sales Associate',
+    collection: 'archive',
+    salary,
+    location,
+    employmentType: 'Full-time',
+    applications: { total: 18, highFit: 2 },
+    hasPerformance: true,
+    videoStatus: 'completed',
   },
 ]

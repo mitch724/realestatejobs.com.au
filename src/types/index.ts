@@ -11,6 +11,7 @@ export type IconComponent = ComponentType<IconProps>
 export type JobStatus = 'draft' | 'expired' | 'live'
 export type VideoStatus = 'completed' | 'to-be-completed' | 'none'
 export type JobAction = 'continue-draft' | 'copy'
+export type JobCollection = 'active' | 'draft' | 'archive'
 
 export interface User {
   name: string
@@ -36,16 +37,19 @@ export interface Job {
   id: string
   title: string
   status?: JobStatus
+  salary?: string
+  collection?: JobCollection
   location: string
   employmentType: string
   applications?: JobApplications
   hasPerformance: boolean
   videoStatus: VideoStatus
-  action: JobAction
+  action?: JobAction
 }
 
 export interface NavItem {
   id: string
   label: string
+  path: string
   icon: IconComponent
 }

@@ -1,20 +1,19 @@
+import { Link, useLocation } from 'react-router-dom'
 import { Add, MessageNotif, Profile } from '@/components/ui/icons'
 import { IconButton, cn } from '@/components/ui'
-import type { NavItem } from '@/types'
+import { navItems } from '@/data/mockData'
 
-interface NavbarProps {
-  items: NavItem[]
-  activeId: string
-  onNavigate: (id: string) => void
-}
+export function Navbar() {
+  const { pathname } = useLocation()
+  const isActive = (path: string) =>
+    path === '/' ? pathname === '/' : pathname.startsWith(path)
 
-export function Navbar({ items, activeId, onNavigate }: NavbarProps) {
   return (
     <>
       <header className="border-b border-line bg-white">
         <div className="mx-auto flex h-16 max-w-[1222px] items-center justify-between gap-2 px-4 md:grid md:h-22 md:grid-cols-[1fr_auto_1fr] md:px-6">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="flex items-center md:justify-self-start"
             aria-label="realestatejobs.com.au home"
           >
@@ -25,16 +24,17 @@ export function Navbar({ items, activeId, onNavigate }: NavbarProps) {
               height={40}
               className="h-8 w-auto md:h-10"
             />
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-5 justify-self-center rounded-2xl md:flex">
-            {items.map((item) => {
+            {navItems.map((item) => {
               const Icon = item.icon
-              const active = item.id === activeId
+              const active = isActive(item.path)
               return (
-                <button
+                <Link
                   key={item.id}
-                  onClick={() => onNavigate(item.id)}
+                  to={item.path}
+                  aria-current={active ? 'page' : undefined}
                   className={cn(
                     'inline-flex items-center gap-2 rounded-xl px-4 py-3 text-base font-semibold text-brand-800 transition-colors',
                     active ? 'bg-nav-active-surface' : 'hover:bg-gray-50',
@@ -42,7 +42,7 @@ export function Navbar({ items, activeId, onNavigate }: NavbarProps) {
                 >
                   <Icon size={20} variant={active ? 'Bold' : 'Linear'} />
                   <span className={active ? 'text-nav-active' : undefined}>{item.label}</span>
-                </button>
+                </Link>
               )
             })}
           </nav>
@@ -66,13 +66,13 @@ export function Navbar({ items, activeId, onNavigate }: NavbarProps) {
         className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white pb-[env(safe-area-inset-bottom)] md:hidden"
       >
         <div className="mx-auto flex max-w-md items-stretch justify-around">
-          {items.map((item) => {
+          {navItems.map((item) => {
             const Icon = item.icon
-            const active = item.id === activeId
+            const active = isActive(item.path)
             return (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => onNavigate(item.id)}
+                to={item.path}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
                   'flex flex-1 flex-col items-center gap-1 py-2.5 text-xs font-medium transition-colors',
@@ -81,7 +81,7 @@ export function Navbar({ items, activeId, onNavigate }: NavbarProps) {
               >
                 <Icon size={22} variant={active ? 'Bold' : 'Linear'} />
                 <span>{item.label}</span>
-              </button>
+              </Link>
             )
           })}
         </div>

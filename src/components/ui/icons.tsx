@@ -9,6 +9,10 @@ import {
   UserSquare as _Profile,
   Profile2User as _Profile2User,
   UserCirlceAdd as _UserCircleAdd,
+  Refresh2 as _Repost,
+  Edit2 as _Edit,
+  Copy as _Copy,
+  More as _More,
 } from 'iconsax-react'
 import type { IconComponent, IconProps } from '@/types'
 
@@ -34,6 +38,10 @@ export const MessageNotif = withDefaults(_MessageNotif, 'MessageNotif')
 export const Profile = withDefaults(_Profile, 'Profile')
 export const Profile2User = withDefaults(_Profile2User, 'Profile2User')
 export const UserCircleAdd = withDefaults(_UserCircleAdd, 'UserCircleAdd')
+export const Repost = withDefaults(_Repost, 'Repost')
+export const Edit = withDefaults(_Edit, 'Edit')
+export const Copy = withDefaults(_Copy, 'Copy')
+export const More = withDefaults(_More, 'More')
 
 // iconsax has no podium icon; custom SVG (winner's podium + star).
 export function Ranking({ size = 24, color = 'currentColor', className }: IconProps) {
