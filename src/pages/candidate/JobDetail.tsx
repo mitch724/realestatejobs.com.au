@@ -66,7 +66,13 @@ export default function JobDetail() {
         <aside className="lg:sticky lg:top-24 lg:w-80 lg:shrink-0">
           <div className="rounded-2xl border border-line p-5">
             <div className="flex items-center justify-center rounded-xl border border-line py-6">
-              <RayWhiteLogo />
+              <img
+                src="/job-detail-cover/ray-white-logo.png"
+                alt={job.company}
+                width={330}
+                height={140}
+                className="w-36"
+              />
             </div>
             <Text as="p" variant="label" weight="bold" className="mt-4 text-lg">
               {job.company}
@@ -122,22 +128,13 @@ export default function JobDetail() {
 
 function Hero() {
   return (
-    <div className="relative mt-4 h-56 overflow-hidden rounded-2xl bg-gradient-to-br from-[#e9e3d8] via-[#e2dbcd] to-[#d3c9b8] md:h-80">
-      <svg
-        viewBox="0 0 120 120"
-        fill="none"
-        className="absolute right-8 top-1/2 h-40 w-40 -translate-y-1/2 text-white/70 md:right-20 md:h-52 md:w-52"
-        aria-hidden="true"
-      >
-        <path
-          d="M20 60 L60 24 L100 60 M30 54 V100 H90 V54 M52 100 V72 H68 V100"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
+    <img
+      src="/job-detail-cover/job-detail-cover.png"
+      alt=""
+      width={1170}
+      height={500}
+      className="mt-4 w-full rounded-2xl object-cover"
+    />
   )
 }
 
@@ -202,14 +199,5 @@ function Detail({ label, value }: { label: string; value: string }) {
         {value}
       </Text>
     </div>
-  )
-}
-
-function RayWhiteLogo() {
-  return (
-    <span className="flex items-center gap-1.5">
-      <span className="h-6 w-6 rounded-sm bg-[#ffe600]" />
-      <span className="text-2xl font-extrabold tracking-tight text-ink">Ray White</span>
-    </span>
   )
 }
