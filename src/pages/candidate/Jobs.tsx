@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, IconButton, Text, cn } from '@/components/ui'
 import { Filter, Search } from '@/components/ui/icons'
 import { RecommendedJobs } from '@/components/candidate/RecommendedJobs'
@@ -11,6 +12,7 @@ type Tab = (typeof tabs)[number]
 export default function CandidateJobs() {
   const [tab, setTab] = useState<Tab>('Recommended')
   const [query, setQuery] = useState('')
+  const navigate = useNavigate()
   const log = (msg: string) => console.log(`[candidate/jobs] ${msg}`)
 
   const visible =
@@ -81,7 +83,10 @@ export default function CandidateJobs() {
       {visible.length > 0 ? (
         <RecommendedJobs
           jobs={visible}
-          onAction={(action, job: RecommendedJob) => log(`${action} → ${job.title}`)}
+          onAction={(action, job: RecommendedJob) => {
+            if (action === 'view') navigate(`/candidate/jobs/${job.id}`)
+            else log(`${action} → ${job.title}`)
+          }}
         />
       ) : (
         <div className="rounded-2xl border border-line py-16 text-center text-sm text-muted">

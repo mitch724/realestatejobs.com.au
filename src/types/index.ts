@@ -64,6 +64,29 @@ export interface RecommendedJob {
   salary: string
 }
 
+export interface JobSection {
+  heading: string
+  type: 'paragraphs' | 'bullets'
+  body: string[]
+}
+
+export interface JobDetail {
+  id: string
+  title: string
+  publishedDate: string
+  summary: string
+  tags: string[]
+  whatsOnOffer: string[]
+  sections: JobSection[]
+  licenceTypes: string[]
+  experienceLevels: string[]
+  company: string
+  companyLocation: string
+  employment: string
+  salary: string
+  location: string
+}
+
 export type PipelineStage =
   | 'applied'
   | 'screening'

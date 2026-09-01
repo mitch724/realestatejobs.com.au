@@ -22,6 +22,8 @@ import {
   Filter as _Filter,
   Share as _Share,
   SearchNormal1 as _Search,
+  ArrowLeft as _ArrowLeft,
+  Save2 as _Save,
 } from 'iconsax-react'
 import type { IconComponent, IconProps } from '@/types'
 
@@ -60,6 +62,8 @@ export const ChevronDown = withDefaults(_ChevronDown, 'ChevronDown')
 export const Filter = withDefaults(_Filter, 'Filter')
 export const Share = withDefaults(_Share, 'Share')
 export const Search = withDefaults(_Search, 'Search')
+export const ArrowLeft = withDefaults(_ArrowLeft, 'ArrowLeft')
+export const Save = withDefaults(_Save, 'Save')
 
 // iconsax has no podium icon; custom SVG (winner's podium + star).
 export function Ranking({ size = 24, color = 'currentColor', className }: IconProps) {
