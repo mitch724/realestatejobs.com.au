@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { Text } from '@/components/ui'
-import { Clock, Eye, More, Send, Sms, Video } from '@/components/ui/icons'
+import { Text, cn } from '@/components/ui'
+import { Clock, Eye, MessageNotif, More, Send, Video } from '@/components/ui/icons'
 import type { Candidate } from '@/types'
 
 interface CandidateCardProps {
@@ -74,26 +74,21 @@ export function CandidateCard({ candidate, onAction }: CandidateCardProps) {
           Applied {candidate.appliedAgo}
         </span>
         <div className="flex items-center gap-2">
-          <CardAction label="More" onClick={() => onAction('more', candidate)}>
-            <More size={18} />
+          <CardAction label="More" tone="outline" onClick={() => onAction('more', candidate)}>
+            <More size={18} variant="Bold" className="rotate-90" />
           </CardAction>
           <CardAction label="View profile" onClick={() => onAction('view', candidate)}>
-            <Eye size={18} />
+            <Eye size={18} variant="Bold" />
           </CardAction>
           <CardAction label="Video interview" onClick={() => onAction('video', candidate)}>
-            <Video size={18} />
+            <Video size={18} variant="Bold" />
           </CardAction>
           <CardAction label="Message" onClick={() => onAction('message', candidate)}>
-            <Sms size={18} />
+            <MessageNotif size={18} variant="Bold" />
           </CardAction>
-          <button
-            aria-label="Send"
-            title="Send"
-            onClick={() => onAction('send', candidate)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600 text-white transition-colors hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/60"
-          >
-            <Send size={18} />
-          </button>
+          <CardAction label="Send" tone="primary" onClick={() => onAction('send', candidate)}>
+            <Send size={18} variant="Bold" />
+          </CardAction>
         </div>
       </div>
     </div>
@@ -104,17 +99,27 @@ function CardAction({
   label,
   onClick,
   children,
+  tone = 'soft',
 }: {
   label: string
   onClick: () => void
   children: ReactNode
+  tone?: 'soft' | 'outline' | 'primary'
 }) {
+  const tones = {
+    soft: 'bg-icon-surface text-brand-800 hover:bg-icon-surface-hover',
+    outline: 'border border-line bg-white text-brand-800 hover:bg-gray-50',
+    primary: 'bg-brand-600 text-white hover:bg-brand-700',
+  }
   return (
     <button
       aria-label={label}
       title={label}
       onClick={onClick}
-      className="flex h-10 w-10 items-center justify-center rounded-xl border border-line text-muted transition-colors hover:bg-gray-50 hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/60"
+      className={cn(
+        'flex h-10 w-10 items-center justify-center rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/60',
+        tones[tone],
+      )}
     >
       {children}
     </button>
