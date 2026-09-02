@@ -75,19 +75,19 @@ export function CandidateCard({ candidate, onAction }: CandidateCardProps) {
         </span>
         <div className="flex items-center gap-2">
           <CardAction label="More" tone="outline" onClick={() => onAction('more', candidate)}>
-            <More size={18} variant="Bold" className="rotate-90" />
+            <More size={18} className="rotate-90" />
           </CardAction>
           <CardAction label="View profile" onClick={() => onAction('view', candidate)}>
-            <Eye size={18} variant="Bold" />
+            <Eye size={18} />
           </CardAction>
           <CardAction label="Video interview" onClick={() => onAction('video', candidate)}>
-            <Video size={18} variant="Bold" />
+            <Video size={18} />
           </CardAction>
           <CardAction label="Message" onClick={() => onAction('message', candidate)}>
-            <MessageNotif size={18} variant="Bold" />
+            <MessageNotif size={18} />
           </CardAction>
           <CardAction label="Send" tone="primary" onClick={() => onAction('send', candidate)}>
-            <Send size={18} variant="Bold" />
+            <Send size={18} />
           </CardAction>
         </div>
       </div>
