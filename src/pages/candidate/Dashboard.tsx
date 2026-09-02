@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { WelcomeBanner } from '@/components/candidate/WelcomeBanner'
 import { RecommendedJobs } from '@/components/candidate/RecommendedJobs'
 import { StatCardGrid } from '@/components/dashboard/StatCard'
@@ -6,6 +7,7 @@ import { currentUser, candidateStats, recommendedJobs } from '@/data/mockData'
 import type { RecommendedJob } from '@/types'
 
 export default function CandidateDashboard() {
+  const navigate = useNavigate()
   const log = (msg: string) => console.log(`[candidate] ${msg}`)
 
   return (
@@ -26,7 +28,10 @@ export default function CandidateDashboard() {
         <Text variant="h3">Recommended for you</Text>
         <RecommendedJobs
           jobs={recommendedJobs}
-          onAction={(action, job: RecommendedJob) => log(`${action} → ${job.title}`)}
+          onAction={(action, job: RecommendedJob) => {
+            if (action === 'view') navigate(`/candidate/jobs/${job.id}`)
+            else log(`${action} → ${job.title}`)
+          }}
         />
       </section>
     </main>
