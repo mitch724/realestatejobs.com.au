@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, IconButton, Text, cn } from '@/components/ui'
 import { Filter, Search } from '@/components/ui/icons'
 import { RecommendedJobs } from '@/components/candidate/RecommendedJobs'
-import { candidateJobs } from '@/data/mockData'
+import { candidateJobs } from '@/data/candidate'
 import type { RecommendedJob } from '@/types'
 
 const tabs = ['Recommended', 'Latest', 'Saved', 'Job Alerts'] as const

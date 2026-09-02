@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button, Text } from '@/components/ui'
 import { ArrowLeft, Save, Share } from '@/components/ui/icons'
-import { jobDetail } from '@/data/mockData'
+import { jobDetail } from '@/data/candidate'
 import type { JobDetail as JobDetailType, JobSection } from '@/types'
 
 export default function JobDetail() {

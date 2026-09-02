@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
-import { employerNavItems, candidateNavItems } from './data/mockData'
+import { employerNavItems, candidateNavItems } from './config/nav'
 import Dashboard from './pages/Dashboard'
 import Jobs from './pages/Jobs'
 import Candidates from './pages/Candidates'

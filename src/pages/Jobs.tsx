@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button, Text, cn } from '@/components/ui'
 import { Add } from '@/components/ui/icons'
 import { JobsTable } from '@/components/jobs/JobsTable'
-import { employerJobs } from '@/data/mockData'
+import { employerJobs } from '@/data/employer'
 import type { Job, JobCollection } from '@/types'
 
 const tabs: { value: JobCollection; label: string }[] = [

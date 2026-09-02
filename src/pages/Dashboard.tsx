@@ -2,7 +2,8 @@ import { WelcomeBanner } from '@/components/dashboard/WelcomeBanner'
 import { StatCardGrid } from '@/components/dashboard/StatCard'
 import { JobsTable } from '@/components/dashboard/JobsTable'
 import { Text } from '@/components/ui'
-import { currentUser, stats, jobs } from '@/data/mockData'
+import { currentUser } from '@/data/user'
+import { stats, jobs } from '@/data/employer'
 import type { Job } from '@/types'
 
 export default function Dashboard() {

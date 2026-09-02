@@ -3,7 +3,8 @@ import { WelcomeBanner } from '@/components/candidate/WelcomeBanner'
 import { RecommendedJobs } from '@/components/candidate/RecommendedJobs'
 import { StatCardGrid } from '@/components/dashboard/StatCard'
 import { Text } from '@/components/ui'
-import { currentUser, candidateStats, recommendedJobs } from '@/data/mockData'
+import { currentUser } from '@/data/user'
+import { candidateStats, recommendedJobs } from '@/data/candidate'
 import type { RecommendedJob } from '@/types'
 
 export default function CandidateDashboard() {

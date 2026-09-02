@@ -16,7 +16,7 @@ import { Button, IconButton, Text, cn } from '@/components/ui'
 import { ChevronDown, Filter } from '@/components/ui/icons'
 import { RoleList } from '@/components/candidates/RoleList'
 import { CandidateCard } from '@/components/candidates/CandidateCard'
-import { roles, candidates as initialCandidates, pipelineStages } from '@/data/mockData'
+import { roles, candidates as initialCandidates, pipelineStages } from '@/data/pipeline'
 import type { Candidate, PipelineStage } from '@/types'
 
 export default function Candidates() {
