@@ -23,7 +23,7 @@ import {
   Share as _Share,
   SearchNormal1 as _Search,
   ArrowLeft as _ArrowLeft,
-  Save2 as _Save,
+  ArchiveTick as _Save,
 } from 'iconsax-react'
 import type { IconComponent, IconProps } from '@/types'
 

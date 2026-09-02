@@ -65,13 +65,12 @@ export default function JobDetail() {
 
         <aside className="lg:sticky lg:top-24 lg:w-80 lg:shrink-0">
           <div className="rounded-2xl border border-line p-5">
-            <div className="flex items-center justify-center rounded-xl border border-line py-6">
+            <div className="flex items-center justify-center rounded-xl border border-line ">
               <img
                 src="/job-detail-cover/ray-white-logo.png"
                 alt={job.company}
-                width={330}
-                height={140}
-                className="w-36"
+                
+                className="w-80"
               />
             </div>
             <Text as="p" variant="label" weight="bold" className="mt-4 text-lg">
